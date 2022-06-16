@@ -1,0 +1,21 @@
+{
+    "name": "meceway/hola-jwt",
+    "description": "hola jwt library",
+    "type": "library",
+    "require": {
+        "php": "^8.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hola\\JWT\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aikur",
+            "email": "aikur@live.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
