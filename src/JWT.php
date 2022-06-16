@@ -141,7 +141,7 @@
             $payload['exp'] = $refresh ? $iat + $this->expired_r : $iat + $this->expired;
             if (isset($this->nbf)) $payload['nbf'] = $this->nbf;
 
-            $payload = base64_encode(json_encode(array_merge($data, $payload)));
+            $payload = base64_encode(json_encode($payload));
 
             $signature = $this->signature($header, $payload, $keyAndAlg->getKey(), $keyAndAlg->getAlg());
             return implode('.', [$header, $payload, $signature]);
