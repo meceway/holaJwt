@@ -23,6 +23,7 @@
             $this->alg = $alg;
         }
 
+
         public function getKey(): string
         {
             return $this->key;
