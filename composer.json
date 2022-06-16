@@ -3,7 +3,8 @@
     "description": "hola jwt library",
     "type": "library",
     "require": {
-        "php": "^8.0"
+        "php": "^8.0",
+        "vendor/package3": "^2.0.3"
     },
     "license": "MIT",
     "autoload": {
