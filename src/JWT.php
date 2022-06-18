@@ -13,6 +13,7 @@
         private string $sub;                //JWT所面向的用户
         private string $aud;                //接收jwt的一方,是一个用户的id
         private string $nbf;                //在什么时候jwt开始生效，这里是一个Unix时间戳，在这之前是不可用的，默认是当前时间
+        private string $iat;                //jwt的签发时间，这里是一个Unix时间戳，默认是当前时间
 
         /**
          * sign方法返回的是两个token，一个是短时有效的，一个是长时有效的。
@@ -113,6 +114,16 @@
         public function nbf(string $nbf): JWT
         {
             $this->nbf = $nbf;
+            return $this;
+        }
+
+        /**
+         * @param string $iat   jwt的签发时间，这里是一个Unix时间戳，默认是当前时间
+         * @return $this
+         */
+        public function iat(string $iat): JWT
+        {
+            $this->iat = $iat;
             return $this;
         }
 
