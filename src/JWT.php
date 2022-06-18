@@ -176,7 +176,7 @@
                 case 'HS512':
                     return hash_hmac('sha512', $signature, $key);
                 default:
-                    throw new TypeError('unsupported algorithm');
+                    throw new TypeError('不支持的算法');
             }
         }
 
@@ -211,7 +211,7 @@
         private function expToken(string $token): array
         {
             $tokenArray = explode('.', $token);
-            if (count($tokenArray) !== 3) new TypeError('token格式不正确');
+            if (count($tokenArray) !== 3) throw new TypeError('token格式不正确');
             $header = json_decode(base64_decode($tokenArray[0]), true);
             $payload = json_decode(base64_decode($tokenArray[1]), true);
             $signature = $tokenArray[2];

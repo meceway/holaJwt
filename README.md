@@ -1,10 +1,16 @@
 # holaJwt
 一个简单的JWT库
 
-# 安装方法
+## 安装方法
 ```bash
-composer require firebase/php-jwt
+composer require Hola\JWT
 ```
+
+## 支持的算法
+- HS256
+- HS384
+- HS512
+
 ## 示范
 ```php
 use Hola\JWT\JWT
