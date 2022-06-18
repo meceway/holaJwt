@@ -2,6 +2,11 @@
     "name": "meceway/hola-jwt",
     "description": "hola jwt library",
     "type": "library",
+    "keywords": [
+        "php",
+        "jwt",
+        "hola"
+    ],
     "version": "0.0.1",
     "require": {
         "php": "^8.0",

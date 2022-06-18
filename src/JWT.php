@@ -169,7 +169,58 @@
             }
         }
 
-        // 判断token是否过期
-
         // 判断token是否合法
+        public function Vertify(string $token, string $key): bool
+        {
+            $tokenArray = $this->expToken($token);
+            list($header, $payload) = $tokenArray;
+
+            // 判断header部分是否合法
+            if (!isset($header['alg'])) return false;
+            if (!isset($header['typ'])) return false;
+            if ($header['typ'] !== 'JWT') return false;
+
+            // 判断payload部分是否合法
+            if (!isset($payload['iat'])) return false;
+            if (!isset($payload['data'])) return false;
+            if (!isset($payload['exp'])) return false;
+            if (!isset($payload['nbf'])) return false;
+            if (!isset($payload['iss'])) return false;
+            if (!isset($payload['sub'])) return false;
+            if (!isset($payload['aud'])) return false;
+            if (!isset($payload['jti'])) return false;
+
+            //  判断签名是否合法
+            $signature = $this->signature($header, $payload, $key, $header['alg']);
+            if ($signature !== $tokenArray[2]) return false;
+
+            return true;
+        }
+
+        private function expToken(string $token): array
+        {
+            $tokenArray = explode('.', $token);
+            if (count($tokenArray) !== 3) new TypeError('token格式不正确');
+            $header = json_decode(base64_decode($tokenArray[0]), true);
+            $payload = json_decode(base64_decode($tokenArray[1]), true);
+            $signature = $tokenArray[2];
+            return [$header, $payload, $signature];
+        }
+
+        // 判断token是否过期
+        public function isExpired(string $token): bool
+        {
+            $tokenArray = $this->expToken($token);
+            list($header, $payload, $signature) = $tokenArray;
+
+            // 判断payload部分是否合法
+            if (!isset($payload['exp'])) return false;
+            if ($payload['exp'] < time()) return true;
+
+            if (isset($payload['nbf'])) {
+                if ($payload['nbf'] > time()) return true;
+            }
+
+            return false;
+        }
     }
