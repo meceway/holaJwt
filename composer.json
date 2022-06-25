@@ -7,7 +7,7 @@
         "jwt",
         "hola"
     ],
-    "version": "0.0.1",
+    "version": "1.0",
     "require": {
         "php": "^8.0",
         "vendor/package3": "^2.0.3"
@@ -24,5 +24,5 @@
             "email": "aikur@live.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "1.0"
 }
