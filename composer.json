@@ -10,7 +10,6 @@
     "version": "1.0",
     "require": {
         "php": "^8.0",
-        "vendor/package3": "^2.0.3"
     },
     "license": "MIT",
     "autoload": {
